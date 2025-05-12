@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Report PDV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      background-color: #f9f9f9;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 10px;
+    }
+    input, select {
+      width: 100%;
+      padding: 6px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #aaa;
+    }
+    h2 {
+      color: #2c3e50;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #1c5980;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Report Avanzamento Informatica</h2>
+
+  <label for="puntoVendita">Punto Vendita:</label>
+  <select id="puntoVendita">
+    <option value="Fano">Fano</option>
+    <option value="Monsano">Monsano</option>
+    <option value="Osimo">Osimo</option>
+    <option value="Macerata">Macerata</option>
+    <option value="Civitanova">Civitanova</option>
+    <option value="Pesaro">Pesaro</option>
+  </select>
+
+  <label for="deltaMese">Delta Mese €:</label>
+  <input type="number" id="deltaMese" />
+
+  <label for="deltaPrezzo">Delta Prezzo Medio €:</label>
+  <input type="number" id="deltaPrezzo" />
+
+  <h3>Prodotti Focus</h3>
+
+  <label for="ecotank">Ecotank:</label>
+  <input type="number" id="ecotank" />
+
+  <label for="pcFuoriGriglia">PC Fuori Griglia:</label>
+  <input type="number" id="pcFuoriGriglia" />
+
+  <h3>ATTACH INFORMATICA</h3>
+
+  <label for="servizi">Servizi:</label>
+  <select id="servizi">
+    <option value="ROSSO">ROSSO</option>
+    <option value="ARANCIO">ARANCIO</option>
+    <option value="GIALLO">GIALLO</option>
+    <option value="VERDINO">VERDINO</option>
+    <option value="VERDE">VERDE</option>
+  </select>
+
+  <label for="antivirus">Antivirus:</label>
+  <select id="antivirus">
+    <option value="ROSSO">ROSSO</option>
+    <option value="ARANCIO">ARANCIO</option>
+    <option value="GIALLO">GIALLO</option>
+    <option value="VERDINO">VERDINO</option>
+    <option value="VERDE">VERDE</option>
+  </select>
+
+  <label for="office">Office:</label>
+  <select id="office">
+    <option value="ROSSO">ROSSO</option>
+    <option value="ARANCIO">ARANCIO</option>
+    <option value="GIALLO">GIALLO</option>
+    <option value="VERDINO">VERDINO</option>
+    <option value="VERDE">VERDE</option>
+  </select>
+
+  <label for="tabletPack">Tablet Pack:</label>
+  <select id="tabletPack">
+    <option value="ROSSO">ROSSO</option>
+    <option value="ARANCIO">ARANCIO</option>
+    <option value="GIALLO">GIALLO</option>
+    <option value="VERDINO">VERDINO</option>
+    <option value="VERDE">VERDE</option>
+  </select>
+
+  <label for="appleEstensioni">Apple Estensioni:</label>
+  <select id="appleEstensioni">
+    <option value="ROSSO">ROSSO</option>
+    <option value="ARANCIO">ARANCIO</option>
+    <option value="GIALLO">GIALLO</option>
+    <option value="VERDINO">VERDINO</option>
+    <option value="VERDE">VERDE</option>
+  </select>
+
+  <button onclick="inviaMail()">Invia Report</button>
+
+  <script>
+    function inviaMail() {
+      const puntoVendita = document.getElementById('puntoVendita').value;
+      const deltaMese = document.getElementById('deltaMese').value;
+      const deltaPrezzo = document.getElementById('deltaPrezzo').value;
+      const ecotank = document.getElementById('ecotank').value;
+      const pcFuoriGriglia = document.getElementById('pcFuoriGriglia').value;
+      const servizi = document.getElementById('servizi').value;
+      const antivirus = document.getElementById('antivirus').value;
+      const office = document.getElementById('office').value;
+      const tabletPack = document.getElementById('tabletPack').value;
+      const appleEstensioni = document.getElementById('appleEstensioni').value;
+
+      const body = 
+        "Punto Vendita: " + puntoVendita + "%0D%0A" +
+        "Delta Mese €: " + deltaMese + "%0D%0A" +
+        "Delta Prezzo Medio €: " + deltaPrezzo + "%0D%0A%0D%0A" +
+        "Prodotti Focus:%0D%0A" +
+        "- Ecotank: " + ecotank + "%0D%0A" +
+        "- PC Fuori Griglia: " + pcFuoriGriglia + "%0D%0A%0D%0A" +
+        "ATTACH INFO:%0D%0A" +
+        "- Servizi: " + servizi + "%0D%0A" +
+        "- Antivirus: " + antivirus + "%0D%0A" +
+        "- Office: " + office + "%0D%0A" +
+        "- Tablet Pack: " + tabletPack + "%0D%0A" +
+        "- Apple Estensioni: " + appleEstensioni;
+
+      const subject = "AVANZAMENTO SETTORE INFO";
+      const mailtoLink = "mailto:d.pavoni@dml-italia.com?subject=" + encodeURIComponent(subject) + "&body=" + body;
+      window.location.href = mailtoLink;
+    }
+  </script>
+</body>
+</html>
